@@ -1,7 +1,5 @@
 from flask import jsonify, request,  render_template
 from app import app, db
-from flask import jsonify, request, render_template
-from app import app
 from models import (
     get_all_users, get_user_by_id, create_user, update_user, delete_user,
     get_all_accounts, get_account_by_id, create_account, update_account, delete_account,
