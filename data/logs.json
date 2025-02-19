@@ -1,0 +1,403 @@
+[
+    {
+      "log_id": "log001",
+      "timestamp": "2025-02-20T08:00:00.000Z",
+      "user_email": "superadmin@bank.com",
+      "role": "Super Administrateur",
+      "api_endpoint": "/accounts",
+      "method": "POST",
+      "status": 201,
+      "message": "Created new account for user test16@test.com"
+    },
+    {
+      "log_id": "log002",
+      "timestamp": "2025-02-20T08:05:00.000Z",
+      "user_email": "admin@bank.com",
+      "role": "Administrateur",
+      "api_endpoint": "/users",
+      "method": "PUT",
+      "status": 200,
+      "message": "Updated user details for test17@test.com"
+    },
+    {
+      "log_id": "log003",
+      "timestamp": "2025-02-20T08:10:00.000Z",
+      "user_email": "gestionnaire@bank.com",
+      "role": "Gestionnaire",
+      "api_endpoint": "/transactions",
+      "method": "POST",
+      "status": 201,
+      "message": "Processed transaction for test18@test.com"
+    },
+    {
+      "log_id": "log004",
+      "timestamp": "2025-02-20T08:15:00.000Z",
+      "user_email": "manager@bank.com",
+      "role": "Manager",
+      "api_endpoint": "/permissions",
+      "method": "POST",
+      "status": 200,
+      "message": "Granted access rights to user test19@test.com"
+    },
+    {
+      "log_id": "log005",
+      "timestamp": "2025-02-20T08:20:00.000Z",
+      "user_email": "system.analyst@bank.com",
+      "role": "Analyste Système",
+      "api_endpoint": "/logs",
+      "method": "GET",
+      "status": 200,
+      "message": "Retrieved system logs"
+    },
+    {
+      "log_id": "log006",
+      "timestamp": "2025-02-20T08:25:00.000Z",
+      "user_email": "marketing.analyst@bank.com",
+      "role": "Analyste Marketing",
+      "api_endpoint": "/analytics",
+      "method": "GET",
+      "status": 200,
+      "message": "Fetched user behavior analytics"
+    },
+    {
+      "log_id": "log007",
+      "timestamp": "2025-02-20T08:30:00.000Z",
+      "user_email": "test20@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/balance",
+      "method": "GET",
+      "status": 200,
+      "message": "Retrieved account balance"
+    },
+    {
+      "log_id": "log008",
+      "timestamp": "2025-02-20T08:35:00.000Z",
+      "user_email": "test21@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/transactions",
+      "method": "GET",
+      "status": 200,
+      "message": "Retrieved recent transactions"
+    },
+    {
+      "log_id": "log009",
+      "timestamp": "2025-02-20T08:40:00.000Z",
+      "user_email": "gestionnaire@bank.com",
+      "role": "Gestionnaire",
+      "api_endpoint": "/transactions",
+      "method": "POST",
+      "status": 201,
+      "message": "Processed debit transaction for test22@test.com"
+    },
+    {
+      "log_id": "log010",
+      "timestamp": "2025-02-20T08:45:00.000Z",
+      "user_email": "admin@bank.com",
+      "role": "Administrateur",
+      "api_endpoint": "/users",
+      "method": "DELETE",
+      "status": 200,
+      "message": "Deleted temporary user test23@test.com"
+    },
+    {
+      "log_id": "log011",
+      "timestamp": "2025-02-20T08:50:00.000Z",
+      "user_email": "superadmin@bank.com",
+      "role": "Super Administrateur",
+      "api_endpoint": "/users",
+      "method": "PUT",
+      "status": 200,
+      "message": "Modified user role for test0@test.com"
+    },
+    {
+      "log_id": "log012",
+      "timestamp": "2025-02-20T08:55:00.000Z",
+      "user_email": "manager@bank.com",
+      "role": "Manager",
+      "api_endpoint": "/permissions",
+      "method": "DELETE",
+      "status": 200,
+      "message": "Revoked access rights from user test1@test.com"
+    },
+    {
+      "log_id": "log013",
+      "timestamp": "2025-02-20T09:00:00.000Z",
+      "user_email": "system.analyst@bank.com",
+      "role": "Analyste Système",
+      "api_endpoint": "/clients",
+      "method": "GET",
+      "status": 200,
+      "message": "Accessed client data for anomaly detection"
+    },
+    {
+      "log_id": "log014",
+      "timestamp": "2025-02-20T09:05:00.000Z",
+      "user_email": "marketing.analyst@bank.com",
+      "role": "Analyste Marketing",
+      "api_endpoint": "/analytics",
+      "method": "GET",
+      "status": 200,
+      "message": "Collected anonymized balance data"
+    },
+    {
+      "log_id": "log015",
+      "timestamp": "2025-02-20T09:10:00.000Z",
+      "user_email": "aaa@aaa.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/profile",
+      "method": "PUT",
+      "status": 200,
+      "message": "Updated personal information"
+    },
+    {
+      "log_id": "log016",
+      "timestamp": "2025-02-20T09:15:00.000Z",
+      "user_email": "a@a.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/transactions",
+      "method": "POST",
+      "status": 201,
+      "message": "Initiated funds transfer"
+    },
+    {
+      "log_id": "log017",
+      "timestamp": "2025-02-20T09:20:00.000Z",
+      "user_email": "gestionnaire@bank.com",
+      "role": "Gestionnaire",
+      "api_endpoint": "/transactions",
+      "method": "POST",
+      "status": 201,
+      "message": "Processed credit transaction for test9999@test.com"
+    },
+    {
+      "log_id": "log018",
+      "timestamp": "2025-02-20T09:25:00.000Z",
+      "user_email": "admin@bank.com",
+      "role": "Administrateur",
+      "api_endpoint": "/users",
+      "method": "PUT",
+      "status": 200,
+      "message": "Updated email for user test2@test.com"
+    },
+    {
+      "log_id": "log019",
+      "timestamp": "2025-02-20T09:30:00.000Z",
+      "user_email": "superadmin@bank.com",
+      "role": "Super Administrateur",
+      "api_endpoint": "/accounts",
+      "method": "DELETE",
+      "status": 200,
+      "message": "Removed inactive account test3@test.com"
+    },
+    {
+      "log_id": "log020",
+      "timestamp": "2025-02-20T09:35:00.000Z",
+      "user_email": "manager@bank.com",
+      "role": "Manager",
+      "api_endpoint": "/permissions",
+      "method": "POST",
+      "status": 200,
+      "message": "Granted user rights to test4@test.com"
+    },
+    {
+      "log_id": "log021",
+      "timestamp": "2025-02-20T09:40:00.000Z",
+      "user_email": "system.analyst@bank.com",
+      "role": "Analyste Système",
+      "api_endpoint": "/logs",
+      "method": "GET",
+      "status": 200,
+      "message": "Queried error logs"
+    },
+    {
+      "log_id": "log022",
+      "timestamp": "2025-02-20T09:45:00.000Z",
+      "user_email": "marketing.analyst@bank.com",
+      "role": "Analyste Marketing",
+      "api_endpoint": "/analytics",
+      "method": "GET",
+      "status": 200,
+      "message": "Analyzed login patterns"
+    },
+    {
+      "log_id": "log023",
+      "timestamp": "2025-02-20T09:50:00.000Z",
+      "user_email": "test5@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/balance",
+      "method": "GET",
+      "status": 200,
+      "message": "Viewed current balance"
+    },
+    {
+      "log_id": "log024",
+      "timestamp": "2025-02-20T09:55:00.000Z",
+      "user_email": "test6@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/transactions",
+      "method": "GET",
+      "status": 200,
+      "message": "Viewed recent transactions"
+    },
+    {
+      "log_id": "log025",
+      "timestamp": "2025-02-20T10:00:00.000Z",
+      "user_email": "gestionnaire@bank.com",
+      "role": "Gestionnaire",
+      "api_endpoint": "/transactions",
+      "method": "POST",
+      "status": 201,
+      "message": "Processed transaction correction for test7@test.com"
+    },
+    {
+      "log_id": "log026",
+      "timestamp": "2025-02-20T10:05:00.000Z",
+      "user_email": "admin@bank.com",
+      "role": "Administrateur",
+      "api_endpoint": "/users",
+      "method": "POST",
+      "status": 201,
+      "message": "Created new user test8@test.com"
+    },
+    {
+      "log_id": "log027",
+      "timestamp": "2025-02-20T10:10:00.000Z",
+      "user_email": "superadmin@bank.com",
+      "role": "Super Administrateur",
+      "api_endpoint": "/accounts",
+      "method": "PUT",
+      "status": 200,
+      "message": "Updated account status for test9@test.com"
+    },
+    {
+      "log_id": "log028",
+      "timestamp": "2025-02-20T10:15:00.000Z",
+      "user_email": "manager@bank.com",
+      "role": "Manager",
+      "api_endpoint": "/permissions",
+      "method": "PUT",
+      "status": 200,
+      "message": "Modified user rights for test10@test.com"
+    },
+    {
+      "log_id": "log029",
+      "timestamp": "2025-02-20T10:20:00.000Z",
+      "user_email": "system.analyst@bank.com",
+      "role": "Analyste Système",
+      "api_endpoint": "/clients",
+      "method": "GET",
+      "status": 200,
+      "message": "Reviewed suspicious activity for user test11@test.com"
+    },
+    {
+      "log_id": "log030",
+      "timestamp": "2025-02-20T10:25:00.000Z",
+      "user_email": "marketing.analyst@bank.com",
+      "role": "Analyste Marketing",
+      "api_endpoint": "/analytics",
+      "method": "GET",
+      "status": 200,
+      "message": "Compiled data on transaction volumes"
+    },
+    {
+      "log_id": "log031",
+      "timestamp": "2025-02-20T10:30:00.000Z",
+      "user_email": "test12@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/profile",
+      "method": "GET",
+      "status": 200,
+      "message": "Accessed personal profile"
+    },
+    {
+      "log_id": "log032",
+      "timestamp": "2025-02-20T10:35:00.000Z",
+      "user_email": "test13@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/transactions",
+      "method": "POST",
+      "status": 201,
+      "message": "Initiated bill payment"
+    },
+    {
+      "log_id": "log033",
+      "timestamp": "2025-02-20T10:40:00.000Z",
+      "user_email": "gestionnaire@bank.com",
+      "role": "Gestionnaire",
+      "api_endpoint": "/transactions",
+      "method": "POST",
+      "status": 201,
+      "message": "Processed scheduled transaction for test14@test.com"
+    },
+    {
+      "log_id": "log034",
+      "timestamp": "2025-02-20T10:45:00.000Z",
+      "user_email": "admin@bank.com",
+      "role": "Administrateur",
+      "api_endpoint": "/users",
+      "method": "PUT",
+      "status": 200,
+      "message": "Modified contact details for user test15@test.com"
+    },
+    {
+      "log_id": "log035",
+      "timestamp": "2025-02-20T10:50:00.000Z",
+      "user_email": "superadmin@bank.com",
+      "role": "Super Administrateur",
+      "api_endpoint": "/logs",
+      "method": "GET",
+      "status": 200,
+      "message": "Accessed full system logs"
+    },
+    {
+      "log_id": "log036",
+      "timestamp": "2025-02-20T10:55:00.000Z",
+      "user_email": "manager@bank.com",
+      "role": "Manager",
+      "api_endpoint": "/permissions",
+      "method": "DELETE",
+      "status": 200,
+      "message": "Removed user rights for user test16@test.com"
+    },
+    {
+      "log_id": "log037",
+      "timestamp": "2025-02-20T11:00:00.000Z",
+      "user_email": "system.analyst@bank.com",
+      "role": "Analyste Système",
+      "api_endpoint": "/clients",
+      "method": "GET",
+      "status": 200,
+      "message": "Checked client data integrity"
+    },
+    {
+      "log_id": "log038",
+      "timestamp": "2025-02-20T11:05:00.000Z",
+      "user_email": "marketing.analyst@bank.com",
+      "role": "Analyste Marketing",
+      "api_endpoint": "/analytics",
+      "method": "GET",
+      "status": 200,
+      "message": "Extracted user behavior insights"
+    },
+    {
+      "log_id": "log039",
+      "timestamp": "2025-02-20T11:10:00.000Z",
+      "user_email": "test0@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/balance",
+      "method": "GET",
+      "status": 200,
+      "message": "Checked updated balance"
+    },
+    {
+      "log_id": "log040",
+      "timestamp": "2025-02-20T11:15:00.000Z",
+      "user_email": "test1@test.com",
+      "role": "Utilisateur (Client)",
+      "api_endpoint": "/transactions",
+      "method": "GET",
+      "status": 200,
+      "message": "Viewed transaction history"
+    }
+  ]
+  
