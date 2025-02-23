@@ -25,8 +25,7 @@
             "users": ["read"],
             "accounts": ["read"],
             "transactions": ["create", "read"],
-            "logs": ["read"],
-            "roles": ["update"] 
+            "logs": ["read"]
         }
     },
     {
@@ -35,7 +34,8 @@
             "users": ["update"],
             "accounts": [],
             "transactions": [],
-            "logs": []
+            "logs": [],
+            "roles": ["update"] 
         }
     },
     {
