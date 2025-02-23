@@ -117,7 +117,7 @@ Log Schema Example:
 
 ---
 
-### Gestionnaire
+### Gestionnaire ( role manager)
 **As a manager, I want to view the list of client accounts and their transaction history, so I can assist clients in case of issues or detected anomalies.**
 
 **Example**: When the manager wants to view the list of user accounts, using the `GET` method, the `get_accounts` function in `routes.py` calls the `get_all_accounts` function in `models.py`. The `get_all_accounts` function returns the list of user accounts from the `accounts` collection.
