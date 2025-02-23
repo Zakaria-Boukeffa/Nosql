@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Super Administrator",
+        "permissions": {
+            "users": ["create", "read", "update", "delete"],
+            "accounts": ["create", "read", "update", "delete"],
+            "transactions": ["read"],
+            "logs": ["read"],
+            "roles": ["update","read"] 
+        }
+    },
+    {
+        "name": "Administrator",
+        "permissions": {
+            "users": ["create", "read", "update"],
+            "accounts": ["create", "read", "update"],
+            "transactions": [],
+            "logs": ["read"],
+            "roles": ["update"] 
+        }
+    },
+    {
+        "name": "Manager",
+        "permissions": {
+            "users": ["read"],
+            "accounts": ["read"],
+            "transactions": ["create", "read"],
+            "logs": ["read"],
+            "roles": ["update"] 
+        }
+    },
+    {
+        "name": "Role Manager",
+        "permissions": {
+            "users": ["update"],
+            "accounts": [],
+            "transactions": [],
+            "logs": []
+        }
+    },
+    {
+        "name": "System Analyst",
+        "permissions": {
+            "users": ["read"],
+            "accounts": ["read"],
+            "transactions": ["read"],
+            "logs": ["read"]
+        }
+    },
+    {
+        "name": "Marketing Analyst",
+        "permissions": {
+            "users": [],
+            "accounts": [],
+            "transactions": ["read"],
+            "logs": ["read"]
+        }
+    },
+    {
+        "name": "User",
+        "permissions": {
+            "users": ["read", "update"],
+            "accounts": ["read", "update"],
+            "transactions": ["create", "read"],
+            "logs": []
+        }
+    }
+]

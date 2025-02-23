@@ -1,87 +1,154 @@
-from pymongo import MongoClient
+from app import db
 from bson import ObjectId
 from datetime import datetime
 
-# Connect to MongoDB
-client = MongoClient('localhost', 27017)
-db = client['bank_db']
+class BaseModel:
+    def __init__(self, collection):
+        self.collection = collection
 
+    def log_action(self, action, data=None, user_id=None):
+        log_entry = {
+            "timestamp": datetime.utcnow(),
+            "action": action,
+            "collection": self.collection.name,
+            "data": data,
+            "user_id": user_id
+        }
+        db.logs.insert_one(log_entry)
+ 
+class User(BaseModel):
+    def __init__(self):
+        super().__init__(db.users)
+        
+    # Create user function
+    def create(self, user_data):
+        user_data['account'] = []
+        result = self.collection.insert_one(user_data)
+        user_id = str(result.inserted_id)
+        self.log_action("CREATE", user_data, user_id)
+        
+        # Create an account for the user
+        account_model = Account()
+        account_data = {
+            "owner_id": user_id,  # Link the account to the user
+            "balance": 0,
+            "currency": "USD"
+        }
+        account_id = account_model.create(account_data)
 
-# LOGGING FUNCTION
-def log_action(action, collection, data=None, user_id=None):
-    """Log API actions for auditing."""
-    log_entry = {
-        "timestamp": datetime.utcnow(),
-        "action": action,
-        "collection": collection,
-        "data": data,
-        "user_id": user_id
-    }
-    db.logs.insert_one(log_entry)
+        self.collection.update_one(
+            {'_id': ObjectId(user_id)},
+            {'$push': {'account': account_id}}
+        )
+        
+        return user_id 
+    
+    #Read a single user function
+    def get_by_id(self, user_id):
+        return self.collection.find_one({'_id': ObjectId(user_id)})  
+      
+    # Read all users function
+    def get_all(self):
+        return list(self.collection.find()) # retrieves all documents from the users collection and converts them to a list
 
+    # Update user function
+    def update(self, user_id, user_data):
+        result = self.collection.update_one({'_id': ObjectId(user_id)}, {'$set': user_data})
+        if result.modified_count:
+            self.log_action("UPDATE", user_data, user_id)
+        return result
 
-# USER MODEL (CRUD)
-def get_all_users():
-    return list(db.users.find())
+    # Delete user function
+    def delete(self, user_id):
+        result = self.collection.delete_one({'_id': ObjectId(user_id)})
+        if result.deleted_count:
+            self.log_action("DELETE", user_id=user_id)
+        return result
+    
+    # get role function, Not among the crud, but to be used in "Roles and Permissions handling"
+    def get_role(self, user_id):
+        user = self.get_by_id(user_id)
+        return user.get('role') if user else None    
 
-def create_user(user_data):
-    user_id = db.users.insert_one(user_data).inserted_id
-    log_action("CREATE", "users", user_data, str(user_id))  # Log user creation
-    return user_id
+class Account(BaseModel):
+    def __init__(self):
+        super().__init__(db.accounts)
 
-def get_user_by_id(user_id):
-    return db.users.find_one({'_id': ObjectId(user_id)})
+    def get_all(self):
+        return list(self.collection.find())
 
-def update_user(user_id, user_data):
-    result = db.users.update_one({'_id': ObjectId(user_id)}, {'$set': user_data})
-    if result.modified_count:
-        log_action("UPDATE", "users", user_data, user_id)
-    return result
+    def create(self, account_data):
+        result = self.collection.insert_one(account_data)
+        self.log_action("CREATE", account_data, str(result.inserted_id))
+        return result.inserted_id
 
-def delete_user(user_id):
-    result = db.users.delete_one({'_id': ObjectId(user_id)})
-    if result.deleted_count:
-        log_action("DELETE", "users", user_id=user_id)
-    return result
+    def get_by_id(self, account_id):
+        return self.collection.find_one({'_id': ObjectId(account_id)})
 
+    def update(self, account_id, account_data):
+        result = self.collection.update_one({'_id': ObjectId(account_id)}, {'$set': account_data})
+        if result.modified_count:
+            self.log_action("UPDATE", account_data, account_id)
+        return result
 
-# ACCOUNT MODEL (CRUD)
-def get_all_accounts():
-    return list(db.accounts.find())
+    def delete(self, account_id):
+        result = self.collection.delete_one({'_id': ObjectId(account_id)})
+        if result.deleted_count:
+            self.log_action("DELETE", user_id=account_id)
+        return result
 
-def create_account(account_data):
-    account_id = db.accounts.insert_one(account_data).inserted_id
-    log_action("CREATE", "accounts", account_data, str(account_id))
-    return account_id
+class Transaction(BaseModel):
+    def __init__(self):
+        super().__init__(db.transactions)
 
-def get_account_by_id(account_id):
-    return db.accounts.find_one({'_id': ObjectId(account_id)})
+    def get_all(self):
+        return list(self.collection.find())
 
-def update_account(account_id, account_data):
-    result = db.accounts.update_one({'_id': ObjectId(account_id)}, {'$set': account_data})
-    if result.modified_count:
-        log_action("UPDATE", "accounts", account_data, account_id)
-    return result
+    def create(self, transaction_data):
+        result = self.collection.insert_one(transaction_data)
+        self.log_action("CREATE", transaction_data, str(result.inserted_id))
+        return result.inserted_id
 
-def delete_account(account_id):
-    result = db.accounts.delete_one({'_id': ObjectId(account_id)})
-    if result.deleted_count:
-        log_action("DELETE", "accounts", user_id=account_id)
-    return result
+    def get_by_id(self, transaction_id):
+        return self.collection.find_one({'_id': ObjectId(transaction_id)})
 
+    def update(self, transaction_id, transaction_data):
+        result = self.collection.update_one({'_id': ObjectId(transaction_id)}, {'$set': transaction_data})
+        if result.modified_count:
+            self.log_action("UPDATE", transaction_data, transaction_id)
+        return result
 
-# TRANSACTION MODEL (CRUD)
-def get_all_transactions():
-    return list(db.transactions.find())
+    def delete(self, transaction_id):
+        result = self.collection.delete_one({'_id': ObjectId(transaction_id)})
+        if result.deleted_count:
+            self.log_action("DELETE", user_id=transaction_id)
+        return result
+    
+class Log(BaseModel):
+    def __init__(self):
+        super().__init__(db.logs)
 
-def create_transaction(transaction_data):
-    transaction_id = db.transactions.insert_one(transaction_data).inserted_id
-    log_action("CREATE", "transactions", transaction_data, str(transaction_id))
-    return transaction_id
+    def get_all(self):
+        return list(self.collection.find().sort("timestamp", -1))
 
-def get_transaction_by_id(transaction_id):
-    return db.transactions.find_one({'_id': ObjectId(transaction_id)})
+# Class to handle roles and permissions
+class Role(BaseModel):
+    def __init__(self):
+        super().__init__(db.roles)
 
-# LOG MODEL (READ)
-def get_all_logs():
-    return list(db.logs.find().sort("timestamp", -1))
+    # To get the list of all roles and there permissions
+    def get_all_roles(self):
+        return list(self.collection.find())
+
+    def get_by_name(self, name):
+        return self.collection.find_one({'name': name})
+    
+    def get_permissions(self, role_name):
+        role = self.get_by_name(role_name)
+        return role['permissions'] if role else {}
+
+    def update_permissions(self, role_name, new_permissions):
+        return self.collection.update_one(
+            {'name': role_name},
+            {'$set': {'permissions': new_permissions}}
+        )
